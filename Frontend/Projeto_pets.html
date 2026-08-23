@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Adoção de Pets</title>
+
+    <link rel="stylesheet" href="Projeto_pets.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>🐾 Adoção de Pets</h1>
+        <p>Cadastre um pet ou consulte os pets disponíveis para adoção.</p>
+    </header>
+
+    <main>
+
+        <!-- Cadastro do pet -->
+        <section class="cadastro">
+
+            <h2>Cadastrar Pet</h2>
+
+            <div class="campo">
+                <p>Nome do pet:</p>
+                <input type="text" id="nome" placeholder="Digite o nome do pet">
+            </div>
+
+            <div class="campo">
+                <p>Idade:</p>
+                <input type="number" id="idade" min="0" placeholder="Digite a idade">
+            </div>
+
+            <div class="campo">
+                <p>Data de nascimento:</p>
+                <input type="date" id="dataNascimento">
+            </div>
+
+            <div class="campo">
+                <p>Sexo do pet:</p>
+
+                <div class="opcoes">
+                    <input type="radio" id="macho" name="sexo" value="Macho">
+                    <span>Macho</span>
+
+                    <input type="radio" id="femea" name="sexo" value="Fêmea">
+                    <span>Fêmea</span>
+                </div>
+            </div>
+
+            <button onclick="cadastrarPet()" id="btnCadastrar">
+                Cadastrar Pet
+            </button>
+
+        </section>
+
+
+        <!-- Pets disponíveis -->
+        <div class="campo">
+            <p>Pets disponíveis para adoção:</p>
+        <select id="pets">
+            <option value="">Selecione um pet</option>
+        </select>
+
+    </main>
+
+</body>
+</html>
+
+<script>
+    function cadastrarPet() {
+
+    if (nome.value == "") {
+        alert("O nome do pet deve ser preenchido.");
+        return;
+    }
+
+    if (nome.value.length > 50) {
+        alert("O nome do pet deve ter no máximo 50 caracteres.");
+        return;
+    }
+
+    if (idade.value == "") {
+        alert("A idade do pet deve ser preenchida.");
+        return;
+    }
+
+    if (!/^[0-9]+$/.test(idade.value)) {
+        alert("A idade deve conter apenas números.");
+        return;
+    }
+
+    if (dataNascimento.value == "") {
+        alert("A data de nascimento deve ser selecionada.");
+        return;
+    }
+
+    if (!macho.checked && !femea.checked) {
+        alert("O sexo do pet deve ser selecionado.");
+        return;
+    }
+
+    alert("Pet cadastrado com sucesso!");
+}
+
+</script>

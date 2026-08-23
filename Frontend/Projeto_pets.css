@@ -1,0 +1,106 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(255, 240, 208);
+    color: #333;
+}
+
+header {
+    text-align: center;
+    background-color: rgb(255, 214, 180);
+    padding: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #666;
+}
+
+main {
+    width: 90%;
+    max-width: 1100px;
+    margin: 40px auto;
+
+    display: flex;
+    gap: 30px;
+}
+
+main section {
+    width: 50%;
+    background-color: rgb(255, 246, 170);
+    padding: 30px;
+    border-radius: 10px;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    margin-bottom: 25px;
+}
+
+.campo {
+    margin-bottom: 20px;
+}
+
+.campo p {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    font-size: 16px;
+}
+
+.opcoes {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.opcoes input {
+    width: auto;
+}
+
+.opcoes span {
+    margin-right: 15px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+
+    border: none;
+    border-radius: 5px;
+
+    background-color: rgb(255, 214, 180);
+    color: rgb(0, 0, 0);
+
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(250, 194, 147);
+}
+
+.mensagem {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: bold;
+}
