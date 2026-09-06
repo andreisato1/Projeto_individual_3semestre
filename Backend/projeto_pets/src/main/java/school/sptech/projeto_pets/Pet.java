@@ -4,19 +4,20 @@ import java.time.LocalDate;
 
 public class Pet {
 
+
     private Integer id;
     private String nome;
-    private Integer idade;
+    private Integer peso;
     private LocalDate dataNascimento;
-    private SexoAnimal sexo;
+    private String sexo;
 
     public Pet() {
     }
 
-    public Pet(Integer id, String nome, Integer idade, LocalDate dataNascimento, SexoAnimal sexo) {
+    public Pet(Integer id, String nome, Integer peso, LocalDate dataNascimento, String sexo) {
         this.id = id;
         this.nome = nome;
-        this.idade = idade;
+        this.peso = peso;
         this.dataNascimento = dataNascimento;
         this.sexo = sexo;
     }
@@ -37,12 +38,12 @@ public class Pet {
         this.nome = nome;
     }
 
-    public Integer getIdade() {
-        return idade;
+    public Integer getPeso() {
+        return peso;
     }
 
-    public void setIdade(Integer idade) {
-        this.idade = idade;
+    public void setPeso(Integer peso) {
+        this.peso = peso;
     }
 
     public LocalDate getDataNascimento() {
@@ -53,11 +54,12 @@ public class Pet {
         this.dataNascimento = dataNascimento;
     }
 
-    public SexoAnimal getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(SexoAnimal sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
+
 }

@@ -29,8 +29,8 @@
             </div>
 
             <div class="campo">
-                <p>Idade:</p>
-                <input type="number" id="idade" min="0" placeholder="Digite a idade">
+                <p>Peso:</p>
+                <input type="number" id="peso" min="0" placeholder="Digite a peso">
             </div>
 
             <div class="campo">
@@ -60,9 +60,10 @@
         <!-- Pets disponíveis -->
         <div class="campo">
             <p>Pets disponíveis para adoção:</p>
-        <select id="pets">
-            <option value="">Selecione um pet</option>
-        </select>
+            <select id="pets">
+                <option value="">Selecione um pet</option>
+            </select>
+        </div>
 
     </main>
 
@@ -70,39 +71,108 @@
 </html>
 
 <script>
+    
+ // 💡 Alterado de const para var para atender a restrição
+    var URL_API = "http://localhost:8080/pets";
+
+    window.onload = function() {
+        carregarDropdownPets();
+    };
+
+    function carregarDropdownPets() {
+        fetch(URL_API)
+            .then(resposta => {
+                if (!resposta.ok) {
+
+                    throw new Error("Erro ao buscar pets.");
+
+                }
+                 
+                return resposta.json();
+                
+            })
+                .then(listaDePets => {
+
+                    pets.innerHTML = '<option value="">Selecione um pet</option>';
+
+                    listaDePets.forEach(pet => {
+
+                        pets.innerHTML += `<option value="${pet.id}">ID: ${pet.id} - ${pet.nome} (${pet.peso} kg) - ${pet.sexo}</option>`;
+
+                    });
+
+                })
+
+                .catch(erro => console.error("Erro ao carregar o select:", erro));
+
+    }
+
     function cadastrarPet() {
+        if (nome.value == "") {
+            alert("O nome do pet deve ser preenchido.");
+            return;
+        }
 
-    if (nome.value == "") {
-        alert("O nome do pet deve ser preenchido.");
-        return;
+        if (nome.value.length > 50) {
+            alert("O nome do pet deve ter no máximo 50 caracteres.");
+            return;
+        }
+
+        if (peso.value == "") {
+            alert("A peso do pet deve ser preenchida.");
+            return;
+        }
+
+        if (!/^[0-9]+$/.test(peso.value) || peso.value < 0) {
+            alert("A peso deve conter apenas números válidos.");
+            return;
+        }
+
+        if (dataNascimento.value == "") {
+            alert("A data de nascimento deve ser selecionada.");
+            return;
+        }
+
+        if (!macho.checked && !femea.checked) {
+            alert("O sexo do pet deve ser selecionado.");
+            return;
+        }
+
+        // 💡 Alterado de const para var
+        var sexoSelecionado = macho.checked ? "Macho" : "Fêmea";
+
+        // 💡 Alterado de const para var
+        var payload = {
+            nome: nome.value,
+            peso: Number(peso.value),
+            dataNascimento: dataNascimento.value,
+            sexo: sexoSelecionado
+        };
+
+        fetch(URL_API, {
+            method: "POST",
+            headers: { 
+                "Content-Type": "application/json" 
+            },
+            body: JSON.stringify(payload)
+        })
+        .then(resposta => {
+            if (resposta.status === 201) {
+                alert("Pet cadastrado com sucesso!");
+                
+                nome.value = "";
+                peso.value = "";
+                dataNascimento.value = "";
+                macho.checked = false;
+                femea.checked = false;
+
+                carregarDropdownPets();
+            } else if (resposta.status === 400) {
+                alert("Erro 400: O servidor Java recusou os dados.");
+            } else {
+                alert("Erro inesperado no servidor.");
+            }
+        })
+        .catch(erro => console.error("Erro ao enviar dados para a API:", erro));
     }
-
-    if (nome.value.length > 50) {
-        alert("O nome do pet deve ter no máximo 50 caracteres.");
-        return;
-    }
-
-    if (idade.value == "") {
-        alert("A idade do pet deve ser preenchida.");
-        return;
-    }
-
-    if (!/^[0-9]+$/.test(idade.value)) {
-        alert("A idade deve conter apenas números.");
-        return;
-    }
-
-    if (dataNascimento.value == "") {
-        alert("A data de nascimento deve ser selecionada.");
-        return;
-    }
-
-    if (!macho.checked && !femea.checked) {
-        alert("O sexo do pet deve ser selecionado.");
-        return;
-    }
-
-    alert("Pet cadastrado com sucesso!");
-}
-
 </script>
