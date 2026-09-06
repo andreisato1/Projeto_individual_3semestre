@@ -30,7 +30,7 @@
 
             <div class="campo">
                 <p>Peso:</p>
-                <input type="number" id="peso" min="0" placeholder="Digite a peso">
+                <input type="number" id="peso" min="0" placeholder="Digite o peso">
             </div>
 
             <div class="campo">
@@ -119,12 +119,12 @@
         }
 
         if (peso.value == "") {
-            alert("A peso do pet deve ser preenchida.");
+            alert("O peso do pet deve ser preenchida.");
             return;
         }
 
         if (!/^[0-9]+$/.test(peso.value) || peso.value < 0) {
-            alert("A peso deve conter apenas números válidos.");
+            alert("O peso deve conter apenas números válidos.");
             return;
         }
 
