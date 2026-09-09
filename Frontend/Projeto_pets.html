@@ -72,7 +72,6 @@
 
 <script>
     
- // 💡 Alterado de const para var para atender a restrição
     var URL_API = "http://localhost:8080/pets";
 
     window.onload = function() {
@@ -138,10 +137,8 @@
             return;
         }
 
-        // 💡 Alterado de const para var
         var sexoSelecionado = macho.checked ? "Macho" : "Fêmea";
 
-        // 💡 Alterado de const para var
         var payload = {
             nome: nome.value,
             peso: Number(peso.value),
