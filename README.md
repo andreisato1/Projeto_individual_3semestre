@@ -31,4 +31,5 @@ POST /pets → cadastra um novo pet.
 GET /pets/{id} → consulta um pet pelo ID.
 
 A API utiliza Java, Spring Boot, JdbcTemplate e banco de dados H2.
-O front utiliza Html, Javascript e css.
+
+O front utiliza HTML, Javascript e CSS.
