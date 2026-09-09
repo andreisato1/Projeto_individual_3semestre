@@ -40,7 +40,7 @@ Exemplo de resposta:
 {
     "id": 1,
     "nome": "Rex",
-    "idade": 3,
+    "peso": 3,
     "dataNascimento": "2023-05-10",
     "sexo": "Macho"
 }
@@ -61,7 +61,7 @@ Exemplo:
 ```json
 {
     "nome": "Rex",
-    "idade": 3,
+    "peso": 3,
     "dataNascimento": "2023-05-10",
     "sexo": "Macho"
 }
