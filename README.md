@@ -24,11 +24,52 @@ Comunicação com a API:
 
 O front-end utiliza fetch() para se comunicar com a API
 
-GET /pets → lista os pets e preenche o select.
+Consulta dos pets:
 
-POST /pets → cadastra um novo pet.
+Quando a página é carregada, o JavaScript realiza uma requisição:
 
-GET /pets/{id} → consulta um pet pelo ID.
+GET http://localhost:8080/pets
+
+A API retorna uma lista de pets em formato JSON.
+
+O JavaScript utiliza essa lista para preencher dinamicamente o campo <select> de pets disponíveis.
+
+Exemplo de resposta:
+
+
+  {
+      "id": 1,
+      "nome": "Rex",
+      "idade": 3,
+      "dataNascimento": "2023-05-10",
+      "sexo": "Macho"
+  }
+
+
+Cadastro de um pet:
+
+Ao clicar no botão Cadastrar Pet, o JavaScript valida os dados preenchidos e envia uma requisição:
+
+POST http://localhost:8080/pets
+
+Os dados são enviados no corpo da requisição em formato JSON.
+
+Exemplo:
+
+{
+    "nome": "Rex",
+    "idade": 3,
+    "dataNascimento": "2023-05-10",
+    "sexo": "Macho"
+}
+
+O servidor valida os dados novamente antes de realizar o cadastro no banco.
+
+Quando o cadastro é realizado com sucesso, a API retorna:
+
+201 Created
+
+Depois disso, o front-end limpa o formulário e realiza novamente o GET /pets para atualizar o campo de seleção.
 
 A API utiliza Java, Spring Boot, JdbcTemplate e banco de dados H2.
 
