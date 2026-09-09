@@ -22,7 +22,7 @@ O back-end deve estar executando para o sistema funcionar.
 
 Comunicação com a API:
 
-O front-end utiliza fetch() para se comunicar com a API:
+O front-end utiliza fetch() para se comunicar com a API
 
 GET /pets → lista os pets e preenche o select.
 
